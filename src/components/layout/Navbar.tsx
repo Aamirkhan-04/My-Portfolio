@@ -32,14 +32,15 @@ export function Navbar() {
           href="#top"
           className="font-display text-xs font-bold uppercase tracking-[0.24em] text-foreground/90 transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-violet"
         >
-          {portfolioData.name}
+          <span className="sm:hidden">MA</span>
+          <span className="hidden sm:inline">{portfolioData.name}</span>
         </a>
-        <ul className="flex items-center gap-4 sm:gap-8">
+        <ul className="flex items-center gap-3 sm:gap-8">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-[0.62rem] uppercase tracking-[0.2em] text-foreground/60 transition-opacity hover:text-foreground hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-violet sm:text-[0.72rem]"
+                className="text-[0.6rem] uppercase tracking-[0.12em] text-foreground/60 transition-opacity hover:text-foreground hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-violet sm:text-[0.72rem]"
               >
                 {l.label}
               </a>
