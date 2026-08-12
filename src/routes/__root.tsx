@@ -88,6 +88,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Mohammad Aamir" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Mohammad Aamir — Full Stack Java Developer" },
+      { name: "twitter:title", content: "Mohammad Aamir — Full Stack Java Developer" },
+      { property: "og:description", content: "Portfolio of Mohammad Aamir, a Full Stack Java Developer skilled in Java, Spring Boot, Hibernate, MySQL, React, REST APIs and Spring AI." },
+      { name: "twitter:description", content: "Portfolio of Mohammad Aamir, a Full Stack Java Developer skilled in Java, Spring Boot, Hibernate, MySQL, React, REST APIs and Spring AI." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a650845b3be90fd50e068444ce97dc84/id-preview-c93d5a12--ab866448-c052-4095-9527-daad3039fbda.lovable.app-1786533312406.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a650845b3be90fd50e068444ce97dc84/id-preview-c93d5a12--ab866448-c052-4095-9527-daad3039fbda.lovable.app-1786533312406.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
