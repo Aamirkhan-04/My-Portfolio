@@ -26,16 +26,15 @@ export function Navbar() {
     >
       <nav
         aria-label="Main navigation"
-        className="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 sm:px-8"
+        className="mx-auto flex max-w-[1600px] items-center justify-center gap-6 px-4 py-4 sm:justify-between sm:px-8"
       >
         <a
           href="#top"
-          className="font-display text-xs font-bold uppercase tracking-[0.24em] text-foreground/90 transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-violet"
+          className="hidden font-display text-xs sm:block font-bold uppercase tracking-[0.24em] text-foreground/90 transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-violet"
         >
-          <span className="sm:hidden">MA</span>
           <span className="hidden sm:inline">{portfolioData.name}</span>
         </a>
-        <ul className="flex items-center gap-3 sm:gap-8">
+        <ul className="flex items-center gap-4 sm:gap-8">
           {links.map((l) => (
             <li key={l.href}>
               <a
