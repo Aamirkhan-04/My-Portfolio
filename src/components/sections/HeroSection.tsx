@@ -84,7 +84,7 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="mt-4 w-full max-w-md"
+          className="relative z-10 mt-4 w-full max-w-md"
         >
           <RoleRotator />
         </motion.div>
@@ -93,7 +93,7 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.25, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mt-6 sm:mt-8"
+          className="relative mt-2 sm:mt-4"
         >
           <Portrait3D />
         </motion.div>
