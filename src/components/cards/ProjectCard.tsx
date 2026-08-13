@@ -83,7 +83,7 @@ export function ProjectCard({ project, index, total }: ProjectCardProps) {
           ))}
         </div>
 
-        <div className="mt-8">
+        <div className="relative z-10 mt-8 sm:hidden">
           <ViewProjectButton href={project.github} title={project.title} />
         </div>
       </motion.article>
