@@ -2,7 +2,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, Download } from "lucide-react";
 import { portfolioData } from "@/data/portfolioData";
-import { Magnet } from "@/components/ui/Magnet";
+import { Portrait3D } from "@/components/ui/Portrait3D";
 import { ContactButton } from "@/components/ui/ContactButton";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
