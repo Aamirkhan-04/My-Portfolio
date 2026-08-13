@@ -24,12 +24,17 @@ export function ProjectCard({ project, index, total }: ProjectCardProps) {
     >
       <motion.article
         style={{ scale, willChange: "transform" }}
-        className="overflow-hidden rounded-[1.75rem] border border-foreground/12 bg-[#111114] p-5 shadow-[0_30px_80px_-40px_rgba(139,92,246,0.55)] sm:rounded-[2.5rem] sm:p-10"
+        className="group/card relative overflow-hidden rounded-[1.75rem] border border-foreground/12 bg-[#111114] p-5 shadow-[0_30px_80px_-40px_rgba(139,92,246,0.55)] transition-colors duration-500 hover:border-accent-violet/45 sm:rounded-[2.5rem] sm:p-10"
       >
-        <div className="flex flex-wrap items-baseline justify-between gap-3">
+        <span className="skill-card-corner" aria-hidden="true" />
+
+        <div className="relative z-10 flex flex-wrap items-center justify-between gap-3">
           <span className="text-[0.68rem] uppercase tracking-[0.24em] text-accent-violet">
             {project.index} — {project.category}
           </span>
+          <div className="hidden sm:block">
+            <ViewProjectButton href={project.github} title={project.title} />
+          </div>
         </div>
 
         <h3
@@ -78,7 +83,7 @@ export function ProjectCard({ project, index, total }: ProjectCardProps) {
           ))}
         </div>
 
-        <div className="mt-8">
+        <div className="relative z-10 mt-8 sm:hidden">
           <ViewProjectButton href={project.github} title={project.title} />
         </div>
       </motion.article>

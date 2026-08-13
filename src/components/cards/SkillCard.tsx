@@ -1,35 +1,95 @@
-import { FadeIn } from "@/components/ui/FadeIn";
+import { useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { Coffee, Database, Layout, Leaf, Wrench } from "lucide-react";
 import { TechTag } from "@/components/ui/TechTag";
+import { useIsTouchDevice, useReducedMotion } from "@/hooks/useReducedMotion";
 import type { SkillGroup } from "@/types/portfolio";
 
+const icons = {
+  java: Coffee,
+  spring: Leaf,
+  database: Database,
+  frontend: Layout,
+  tools: Wrench,
+} as const;
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
 export function SkillCard({ skill, delay = 0 }: { skill: SkillGroup; delay?: number }) {
+  const Icon = icons[skill.icon];
+  const ref = useRef<HTMLDivElement>(null);
+  const isTouch = useIsTouchDevice();
+  const reduced = useReducedMotion();
+  const disabled = isTouch || reduced;
+
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+  const sx = useSpring(px, { stiffness: 140, damping: 20 });
+  const sy = useSpring(py, { stiffness: 140, damping: 20 });
+  const rotateY = useTransform(sx, [-1, 1], [-4, 4]);
+  const rotateX = useTransform(sy, [-1, 1], [4, -4]);
+
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (disabled || !ref.current) return;
+    const r = ref.current.getBoundingClientRect();
+    px.set((e.clientX - (r.left + r.width / 2)) / (r.width / 2));
+    py.set((e.clientY - (r.top + r.height / 2)) / (r.height / 2));
+  };
+
   return (
-    <FadeIn delay={delay} className="border-t border-black/15">
-      <div className="grid grid-cols-1 gap-4 py-10 sm:grid-cols-[minmax(0,0.28fr)_minmax(0,1fr)] sm:gap-10 sm:py-14">
+    <motion.div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={() => {
+        px.set(0);
+        py.set(0);
+      }}
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.7, delay, ease }}
+      whileHover={{ y: -6 }}
+      style={{ perspective: 1000 }}
+      className="h-full"
+    >
+      <motion.article
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="skill-card group relative flex h-full flex-col overflow-hidden rounded-3xl border border-foreground/10 bg-foreground/[0.03] p-6 backdrop-blur-md transition-colors duration-300 hover:border-accent-violet/50 sm:p-8"
+      >
+        <span className="skill-card-sheen" aria-hidden="true" />
+        <span className="skill-card-corner" aria-hidden="true" />
+
+        <div className="relative z-10 flex items-center justify-between gap-4">
+          <span className="skill-icon flex h-12 w-12 items-center justify-center rounded-2xl border border-foreground/12 bg-foreground/[0.05] text-accent-violet transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:rotate-6">
+            <Icon className="h-5 w-5" aria-hidden="true" />
+          </span>
+          <span className="text-[0.6rem] uppercase tracking-[0.24em] text-foreground/45">
+            {skill.category}
+          </span>
+        </div>
+
+        <h3 className="relative z-10 mt-6 font-display text-xl font-bold uppercase leading-tight tracking-tight text-foreground sm:text-2xl">
+          {skill.title}
+        </h3>
+
+        <p className="relative z-10 mt-3 text-sm leading-relaxed text-foreground/60">
+          {skill.description}
+        </p>
+
+        <div className="relative z-10 mt-6 flex flex-wrap gap-2">
+          {skill.tags.map((t) => (
+            <TechTag key={t} label={t} />
+          ))}
+        </div>
+
         <span
-          className="font-display font-black leading-none text-black/85"
-          style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}
+          className="relative z-10 mt-6 font-display text-[0.7rem] tracking-[0.3em] text-foreground/25"
+          aria-hidden="true"
         >
           {skill.index}
         </span>
-        <div>
-          <h3
-            className="font-display font-bold uppercase leading-none tracking-tight text-black"
-            style={{ fontSize: "clamp(1.5rem, 3.6vw, 3rem)" }}
-          >
-            {skill.title}
-          </h3>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-black/65 sm:text-base">
-            {skill.description}
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {skill.tags.map((t) => (
-              <TechTag key={t} label={t} dark />
-            ))}
-          </div>
-        </div>
-      </div>
-    </FadeIn>
+      </motion.article>
+    </motion.div>
   );
 }
 

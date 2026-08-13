@@ -2,7 +2,7 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, Download } from "lucide-react";
 import { portfolioData } from "@/data/portfolioData";
-import { Magnet } from "@/components/ui/Magnet";
+import { Portrait3D } from "@/components/ui/Portrait3D";
 import { ContactButton } from "@/components/ui/ContactButton";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -84,7 +84,7 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="mt-4 w-full max-w-md"
+          className="relative z-10 mt-4 w-full max-w-md"
         >
           <RoleRotator />
         </motion.div>
@@ -93,21 +93,9 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.25, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mt-8 sm:mt-10"
-          style={{ perspective: "1000px" }}
+          className="relative mt-2 sm:mt-4"
         >
-          <Magnet strength={0.18}>
-            <div className="portrait-float relative">
-              <div className="portrait-glow" aria-hidden="true" />
-              <img
-                src="/images/profile.png"
-                alt={`Portrait of ${portfolioData.name}, ${portfolioData.title}`}
-                width={800}
-                height={800}
-                className="relative h-[13rem] w-[13rem] rounded-full object-cover object-top ring-1 ring-foreground/15 sm:h-[19rem] sm:w-[19rem]"
-              />
-            </div>
-          </Magnet>
+          <Portrait3D />
         </motion.div>
       </div>
 
@@ -128,16 +116,19 @@ export function HeroSection() {
           className="flex flex-wrap items-center gap-3"
         >
           <ContactButton href={portfolioData.resumePath} download>
-            <Download className="h-4 w-4" aria-hidden="true" />
+            <Download
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
+              aria-hidden="true"
+            />
             Download Resume
           </ContactButton>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-foreground/25 px-6 py-3.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-foreground transition-colors hover:border-foreground/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-violet"
-          >
+          <ContactButton href="#contact" variant="ghost">
             Let&apos;s Talk
-            <ArrowDown className="h-4 w-4" aria-hidden="true" />
-          </a>
+            <ArrowDown
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
+              aria-hidden="true"
+            />
+          </ContactButton>
         </motion.div>
       </div>
     </section>

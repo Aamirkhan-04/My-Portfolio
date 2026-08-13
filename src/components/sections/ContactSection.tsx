@@ -73,7 +73,10 @@ export function ContactSection() {
             </div>
             <div className="mt-8">
               <ContactButton href={portfolioData.resumePath} download>
-                <Download className="h-4 w-4" aria-hidden="true" />
+                <Download
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
+                  aria-hidden="true"
+                />
                 Download Resume
               </ContactButton>
             </div>
@@ -138,9 +141,16 @@ export function ContactSection() {
                 {status === "sending" ? (
                   <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
                 ) : (
-                  <Send className="h-4 w-4" aria-hidden="true" />
+                  <Send
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    aria-hidden="true"
+                  />
                 )}
-                {status === "sending" ? "Sending" : "Send Message"}
+                {status === "sending"
+                  ? "Sending..."
+                  : status === "success"
+                    ? "Message Sent"
+                    : "Send Message"}
               </ContactButton>
 
               <p

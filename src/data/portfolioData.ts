@@ -31,6 +31,8 @@ I enjoy understanding how applications work internally and creating projects wit
   skills: [
     {
       index: "01",
+      category: "BACKEND",
+      icon: "java",
       title: "Java Development",
       description:
         "Core Java, Java 8, Object-Oriented Programming, Collections, Multithreading, Exception Handling and Data Structures.",
@@ -38,6 +40,8 @@ I enjoy understanding how applications work internally and creating projects wit
     },
     {
       index: "02",
+      category: "BACKEND",
+      icon: "spring",
       title: "Spring Ecosystem",
       description:
         "Spring Framework, Spring Boot, Spring AI, REST APIs and MVC architecture.",
@@ -45,6 +49,8 @@ I enjoy understanding how applications work internally and creating projects wit
     },
     {
       index: "03",
+      category: "DATABASE",
+      icon: "database",
       title: "Database & Persistence",
       description:
         "MySQL, JDBC, Hibernate, JPA, database transactions and relational database design.",
@@ -52,12 +58,16 @@ I enjoy understanding how applications work internally and creating projects wit
     },
     {
       index: "04",
+      category: "FRONTEND",
+      icon: "frontend",
       title: "Frontend Development",
       description: "React, JavaScript, TypeScript, HTML, CSS and Tailwind CSS.",
       tags: ["React", "JavaScript", "TypeScript", "HTML", "CSS", "Tailwind CSS"],
     },
     {
       index: "05",
+      category: "TOOLS",
+      icon: "tools",
       title: "Development Tools",
       description: "Git, GitHub, Maven, VS Code, STS and Eclipse.",
       tags: ["Git", "GitHub", "Maven", "VS Code", "STS", "Eclipse"],

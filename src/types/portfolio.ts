@@ -4,8 +4,12 @@ export interface SocialLink {
   icon: "github" | "linkedin" | "mail";
 }
 
+export type SkillIcon = "java" | "spring" | "database" | "frontend" | "tools";
+
 export interface SkillGroup {
   index: string;
+  category: string;
+  icon: SkillIcon;
   title: string;
   description: string;
   tags: string[];

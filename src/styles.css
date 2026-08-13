@@ -221,3 +221,193 @@ body {
     transform: translateY(-14px) rotateX(2deg);
   }
 }
+
+/* ---------- Premium button polish ---------- */
+
+@utility shadow-glow-violet {
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.18),
+    0 18px 45px -20px rgba(139, 92, 246, 0.85);
+}
+
+@utility gradient-pill-anim {
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  transition: background-position 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gradient-pill-anim:hover {
+  background-position: 100% 50%;
+}
+
+@utility btn-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.22) 45%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .btn-shine {
+  transform: translateX(120%);
+}
+
+/* ---------- Skills ---------- */
+
+@utility skills-surface {
+  background:
+    radial-gradient(70% 45% at 15% 0%, rgba(124, 58, 237, 0.14), transparent 65%),
+    radial-gradient(60% 40% at 88% 12%, rgba(56, 189, 248, 0.1), transparent 65%),
+    var(--background);
+}
+
+@utility skill-card-sheen {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(150deg, rgba(139, 92, 246, 0.16), transparent 55%),
+    linear-gradient(320deg, rgba(56, 189, 248, 0.12), transparent 60%);
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skill-card:hover .skill-card-sheen {
+  opacity: 1;
+}
+
+@utility skill-card-corner {
+  position: absolute;
+  top: -3rem;
+  right: -3rem;
+  height: 8rem;
+  width: 8rem;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.35), transparent 70%);
+  filter: blur(18px);
+  opacity: 0.5;
+  transition: opacity 0.45s ease;
+}
+
+.skill-card:hover .skill-card-corner {
+  opacity: 1;
+}
+
+.skill-card:hover {
+  box-shadow: 0 26px 60px -32px rgba(139, 92, 246, 0.8);
+}
+
+.skill-card:hover .skill-icon {
+  box-shadow: 0 0 24px -4px rgba(139, 92, 246, 0.7);
+}
+
+/* ---------- Holographic portrait ---------- */
+
+@utility portrait-halo {
+  position: absolute;
+  inset: -6%;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: conic-gradient(
+    from 0deg,
+    rgba(139, 92, 246, 0.55),
+    rgba(56, 189, 248, 0.35),
+    rgba(217, 70, 239, 0.5),
+    rgba(139, 92, 246, 0.55)
+  );
+  filter: blur(34px);
+  opacity: 0.55;
+  animation: halo-spin 22s linear infinite;
+}
+
+@utility portrait-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+  border: 1px solid rgba(196, 181, 253, 0.35);
+  border-top-color: rgba(196, 181, 253, 0.85);
+  border-left-color: rgba(125, 211, 252, 0.6);
+}
+
+@utility portrait-ring-inner {
+  position: absolute;
+  inset: 6%;
+  border-radius: 9999px;
+  pointer-events: none;
+  border: 1px dashed rgba(125, 211, 252, 0.28);
+}
+
+@utility portrait-ring-spin {
+  animation: halo-spin 26s linear infinite;
+}
+
+@utility portrait-ring-spin-reverse {
+  animation: halo-spin 34s linear infinite reverse;
+}
+
+@utility portrait-glass {
+  position: absolute;
+  inset: 5%;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 40px 90px -40px rgba(139, 92, 246, 0.9);
+}
+
+@utility portrait-image {
+  box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.9);
+}
+
+@utility portrait-orbit {
+  position: absolute;
+  inset: -4%;
+  pointer-events: none;
+  animation: halo-spin 18s linear infinite;
+}
+
+@utility portrait-dot {
+  position: absolute;
+  height: 6px;
+  width: 6px;
+  border-radius: 9999px;
+  background: #c4b5fd;
+  box-shadow: 0 0 12px 2px rgba(196, 181, 253, 0.8);
+}
+
+@utility portrait-dot-a {
+  top: 6%;
+  left: 48%;
+}
+
+@utility portrait-dot-b {
+  bottom: 12%;
+  left: 14%;
+  background: #7dd3fc;
+  box-shadow: 0 0 12px 2px rgba(125, 211, 252, 0.8);
+}
+
+@utility portrait-dot-c {
+  top: 34%;
+  right: 4%;
+  background: #f0abfc;
+  box-shadow: 0 0 12px 2px rgba(240, 171, 252, 0.75);
+}
+
+@keyframes halo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
