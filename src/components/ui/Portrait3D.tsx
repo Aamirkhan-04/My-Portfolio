@@ -64,13 +64,15 @@ export function Portrait3D() {
         {/* glass disc behind portrait */}
         <div className="portrait-glass" aria-hidden="true" />
 
-        <img
-          src="/images/profile.png"
-          alt={`Portrait of ${portfolioData.name}, ${portfolioData.title}`}
-          width={800}
-          height={800}
-          className="portrait-image relative z-10 h-[13rem] w-[13rem] translate-x-[1rem] translate-y-[1rem] rounded-full object-cover object-top ring-1 ring-foreground/15 sm:h-[19rem] sm:w-[19rem] sm:translate-x-[1.5rem] sm:translate-y-[1.5rem]"
-        />
+        <div className="absolute inset-[7%] z-10">
+          <img
+            src="/images/profile.png"
+            alt={`Portrait of ${portfolioData.name}, ${portfolioData.title}`}
+            width={800}
+            height={800}
+            className="portrait-image h-full w-full rounded-full object-cover object-top ring-1 ring-foreground/15"
+          />
+        </div>
       </motion.div>
     </div>
   );

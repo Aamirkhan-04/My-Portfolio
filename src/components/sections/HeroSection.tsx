@@ -116,16 +116,19 @@ export function HeroSection() {
           className="flex flex-wrap items-center gap-3"
         >
           <ContactButton href={portfolioData.resumePath} download>
-            <Download className="h-4 w-4" aria-hidden="true" />
+            <Download
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
+              aria-hidden="true"
+            />
             Download Resume
           </ContactButton>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-foreground/25 px-6 py-3.5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-foreground transition-colors hover:border-foreground/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-violet"
-          >
+          <ContactButton href="#contact" variant="ghost">
             Let&apos;s Talk
-            <ArrowDown className="h-4 w-4" aria-hidden="true" />
-          </a>
+            <ArrowDown
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5"
+              aria-hidden="true"
+            />
+          </ContactButton>
         </motion.div>
       </div>
     </section>
