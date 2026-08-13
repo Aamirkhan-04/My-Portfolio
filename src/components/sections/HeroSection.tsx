@@ -93,21 +93,9 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.25, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mt-8 sm:mt-10"
-          style={{ perspective: "1000px" }}
+          className="relative mt-6 sm:mt-8"
         >
-          <Magnet strength={0.18}>
-            <div className="portrait-float relative">
-              <div className="portrait-glow" aria-hidden="true" />
-              <img
-                src="/images/profile.png"
-                alt={`Portrait of ${portfolioData.name}, ${portfolioData.title}`}
-                width={800}
-                height={800}
-                className="relative h-[13rem] w-[13rem] rounded-full object-cover object-top ring-1 ring-foreground/15 sm:h-[19rem] sm:w-[19rem]"
-              />
-            </div>
-          </Magnet>
+          <Portrait3D />
         </motion.div>
       </div>
 
