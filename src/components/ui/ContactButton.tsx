@@ -35,8 +35,8 @@ export function ContactButton({
 }: ContactButtonProps) {
   const cls = `${base} ${variant === "solid" ? solid : ghost} ${className}`;
   const motionProps = {
-    whileHover: disabled ? undefined : { scale: 1.035, y: -2 },
-    whileTap: disabled ? undefined : { scale: 0.97 },
+    whileHover: disabled ? {} : { scale: 1.035, y: -2 },
+    whileTap: disabled ? {} : { scale: 0.97 },
     transition: { duration: 0.35, ease },
   };
 
