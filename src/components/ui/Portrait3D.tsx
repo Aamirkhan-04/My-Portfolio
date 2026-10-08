@@ -70,7 +70,13 @@ export function Portrait3D() {
             alt={`Portrait of ${portfolioData.name}, ${portfolioData.title}`}
             width={800}
             height={800}
-            className="portrait-image h-full w-full rounded-full object-cover object-top ring-1 ring-foreground/15"
+            draggable={false}
+            onDragStart={(e) => e.preventDefault()}
+            className="portrait-image h-full w-full select-none rounded-full object-cover object-top ring-1 ring-foreground/15"
+            style={{
+              userSelect: "none",
+              WebkitUserSelect: "none",
+            }}
           />
         </div>
       </motion.div>

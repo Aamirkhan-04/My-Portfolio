@@ -27,7 +27,7 @@ export function FloatingShapes({ reduced = false, compact = false }: FloatingSha
     <group>
       {/* LEFT — large translucent torus partly off-screen */}
       <mesh ref={torus} position={compact ? [-3.6, 0.6, -3] : [-5.4, 0.4, -2.5]}>
-        <torusGeometry args={[2.6, 0.34, 32, 120]} />
+        <torusGeometry args={[2.6, 0.34, 24, 80]} />
         <meshPhysicalMaterial
           color="#8b5cf6"
           emissive="#5b21b6"
@@ -70,7 +70,7 @@ export function FloatingShapes({ reduced = false, compact = false }: FloatingSha
       {/* LEFT accent — small glowing sphere */}
       <Float speed={speed * 0.7} rotationIntensity={speed * 0.2} floatIntensity={speed}>
         <mesh position={compact ? [-2.8, -2.2, -4] : [-4.2, -2.3, -4]}>
-          <sphereGeometry args={[0.32, 24, 24]} />
+          <sphereGeometry args={[0.32, 16, 16]} />
           <meshStandardMaterial
             color="#d946ef"
             emissive="#d946ef"

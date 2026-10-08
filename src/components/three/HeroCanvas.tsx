@@ -24,14 +24,20 @@ function ParallaxRig({ children, enabled }: { children: React.ReactNode; enabled
 export function HeroCanvas() {
   const reduced = useReducedMotion();
   const isTouch = useIsTouchDevice();
-  const particleCount = isTouch ? 120 : 360;
+  const particleCount = isTouch ? 90 : 280;
 
   return (
     <Canvas
       className="pointer-events-none"
       camera={{ position: [0, 0, 6], fov: 55 }}
-      dpr={isTouch ? [1, 1.2] : [1, 1.6]}
-      gl={{ antialias: !isTouch, alpha: true, powerPreference: "high-performance" }}
+      dpr={isTouch ? [1, 1.2] : [1, 1.4]}
+      gl={{
+        antialias: !isTouch,
+        alpha: true,
+        powerPreference: "high-performance",
+        stencil: false,
+        depth: true,
+      }}
     >
       <SceneLights />
       <ParallaxRig enabled={!isTouch && !reduced}>

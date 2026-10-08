@@ -81,25 +81,46 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Portfolio of Mohammad Aamir, a Full Stack Java Developer skilled in Java, Spring Boot, Hibernate, MySQL, React, REST APIs and Spring AI.",
+          "Portfolio of Mohammad Aamir, a Full Stack Java Developer based in Mumbai, skilled in Java, Spring Boot, Hibernate, MySQL, React, REST APIs and Spring AI.",
       },
       { name: "author", content: "Mohammad Aamir" },
       { name: "theme-color", content: "#0C0C0C" },
       { property: "og:site_name", content: "Mohammad Aamir" },
-      { property: "og:type", content: "website" },
+      {
+        property: "og:url",
+        content: "https://mohammad-aamir-khan.netlify.app/",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Mohammad Aamir — Full Stack Java Developer" },
       { name: "twitter:title", content: "Mohammad Aamir — Full Stack Java Developer" },
       { property: "og:description", content: "Portfolio of Mohammad Aamir, a Full Stack Java Developer skilled in Java, Spring Boot, Hibernate, MySQL, React, REST APIs and Spring AI." },
       { name: "twitter:description", content: "Portfolio of Mohammad Aamir, a Full Stack Java Developer skilled in Java, Spring Boot, Hibernate, MySQL, React, REST APIs and Spring AI." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a650845b3be90fd50e068444ce97dc84/id-preview-c93d5a12--ab866448-c052-4095-9527-daad3039fbda.lovable.app-1786533312406.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/a650845b3be90fd50e068444ce97dc84/id-preview-c93d5a12--ab866448-c052-4095-9527-daad3039fbda.lovable.app-1786533312406.png" },
+      {
+        property: "og:image",
+        content: "https://mohammad-aamir-khan.netlify.app/og-image.png",
+      },
+      {
+        name: "twitter:image",
+        content: "https://mohammad-aamir-khan.netlify.app/og-image.png",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "shortcut icon", href: "/favicon.png", type: "image/png" },
+
+      {
+        rel: "canonical",
+        href: "https://mohammad-aamir-khan.netlify.app/",
+      },
+
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&display=swap",
@@ -114,11 +135,60 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Mohammad Aamir",
+      alternateName: "Mohammad Aamir Portfolio",
+      url: "https://mohammad-aamir-khan.netlify.app/",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Mohammad Aamir",
+      url: "https://mohammad-aamir-khan.netlify.app/",
+      image: "https://mohammad-aamir-khan.netlify.app/favicon.png",
+      jobTitle: "Full Stack Java Developer",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Mumbai",
+        addressRegion: "Maharashtra",
+        addressCountry: "IN",
+      },
+      sameAs: [
+        "https://github.com/Aamirkhan-04",
+        "https://www.linkedin.com/in/mohammad-aamir-550a0b332/",
+      ],
+      knowsAbout: [
+        "Java",
+        "Spring Boot",
+        "Spring Framework",
+        "Hibernate",
+        "JPA",
+        "REST APIs",
+        "MySQL",
+        "React",
+        "JavaScript",
+        "TypeScript",
+        "Spring AI",
+      ],
+    },
+  ];
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
       </head>
+
       <body>
         {children}
         <Scripts />

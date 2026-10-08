@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Download, Loader2, Send } from "lucide-react";
+import { Download, Send } from "lucide-react";
 import { portfolioData } from "@/data/portfolioData";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactButton } from "@/components/ui/ContactButton";
 import { SocialLinks } from "@/components/ui/SocialLinks";
-import { sendContactEmail } from "@/utils/emailService";
+// import { sendContactEmail } from "@/utils/emailService";
 import { trimValues, validateContact, type ContactErrors, type ContactValues } from "@/utils/validation";
 
 const empty: ContactValues = { name: "", email: "", subject: "", message: "" };
@@ -19,35 +19,39 @@ const fields = [
 export function ContactSection() {
   const [values, setValues] = useState<ContactValues>(empty);
   const [errors, setErrors] = useState<ContactErrors>({});
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [feedback, setFeedback] = useState("");
+  // const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  // const [feedback, setFeedback] = useState("");
 
   const inputClass =
     "w-full rounded-xl border border-foreground/15 bg-foreground/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 focus:border-accent-violet focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-violet/50";
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (status === "sending") return;
 
     const found = validateContact(values);
     setErrors(found);
+
     if (Object.keys(found).length > 0) return;
 
-    setStatus("sending");
-    setFeedback("");
-    try {
-      await sendContactEmail(trimValues(values));
-      setValues(empty);
-      setStatus("success");
-      setFeedback("Thanks for reaching out — your message has been sent.");
-    } catch (err) {
-      setStatus("error");
-      setFeedback(
-        err instanceof Error
-          ? err.message
-          : "Something went wrong while sending. Please try again later.",
-      );
-    }
+    const cleanValues = trimValues(values);
+
+    const subject = encodeURIComponent(
+      cleanValues.subject || "Portfolio Contact"
+    );
+
+    const body = encodeURIComponent(
+      `Hello Aamir,
+
+My name is ${cleanValues.name}.
+
+My Email: ${cleanValues.email}
+
+Message:
+${cleanValues.message}`
+    );
+
+    window.location.href =
+      `mailto:khanaamir129845@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -137,31 +141,13 @@ export function ContactSection() {
                 )}
               </div>
 
-              <ContactButton type="submit" disabled={status === "sending"}>
-                {status === "sending" ? (
-                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                ) : (
-                  <Send
-                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    aria-hidden="true"
-                  />
-                )}
-                {status === "sending"
-                  ? "Sending..."
-                  : status === "success"
-                    ? "Message Sent"
-                    : "Send Message"}
+              <ContactButton type="submit">
+                <Send
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden="true"
+                />
+                Send Message
               </ContactButton>
-
-              <p
-                role="status"
-                aria-live="polite"
-                className={`min-h-5 text-sm ${
-                  status === "error" ? "text-red-400" : "text-emerald-400"
-                }`}
-              >
-                {feedback}
-              </p>
             </form>
           </FadeIn>
         </div>

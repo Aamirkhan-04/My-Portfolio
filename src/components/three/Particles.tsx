@@ -24,8 +24,8 @@ export function Particles({ count = 400, reduced = false }: { count?: number; re
 
   useFrame((_, delta) => {
     if (reduced) return;
-    if (far.current) far.current.rotation.y += delta * 0.012;
-    if (near.current) near.current.rotation.y -= delta * 0.022;
+    if (far.current) far.current.rotation.y += delta * 0.008;
+    if (near.current) near.current.rotation.y -= delta * 0.015;
   });
 
   return (

@@ -18,7 +18,7 @@ function RoleRotator() {
     if (reduced) return;
     const id = window.setInterval(
       () => setI((p) => (p + 1) % portfolioData.roles.length),
-      2600,
+      2200,
     );
     return () => window.clearInterval(id);
   }, [reduced]);
@@ -31,7 +31,7 @@ function RoleRotator() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -20, opacity: 0 }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-x-0 block text-center text-[0.7rem] uppercase tracking-[0.28em] text-accent-violet sm:text-sm"
         >
           {portfolioData.roles[i]}
@@ -43,7 +43,33 @@ function RoleRotator() {
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    let timeoutId: number;
+
+    const load3D = () => {
+      timeoutId = window.setTimeout(() => {
+        setMounted(true);
+      }, 700);
+    };
+
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(load3D, {
+        timeout: 1200,
+      });
+
+      return () => {
+        window.cancelIdleCallback(idleId);
+        window.clearTimeout(timeoutId);
+      };
+    }
+
+    load3D();
+
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, []);
 
   return (
     <section

@@ -13,6 +13,7 @@ export interface SkillGroup {
   title: string;
   description: string;
   tags: string[];
+   level: number; 
 }
 
 export interface Project {
