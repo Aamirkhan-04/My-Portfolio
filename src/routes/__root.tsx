@@ -106,11 +106,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       {
         property: "og:image",
-        content: "https://mohammad-aamir-khan.netlify.app/og-image.png",
+        content: "https://mohammad-aamir-khan.netlify.app/og-image.jpg",
       },
       {
         name: "twitter:image",
-        content: "https://mohammad-aamir-khan.netlify.app/og-image.png",
+        content: "https://mohammad-aamir-khan.netlify.app/og-image.jpg",
       },
     ],
     links: [
