@@ -81,11 +81,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Portfolio of Mohammad Aamir, a Full Stack Java Developer based in Mumbai, skilled in Java, Spring Boot, Hibernate, MySQL, React, REST APIs and Spring AI.",
+          "Portfolio of Mohammad Aamir, a Mumbai-based Full Stack Java Developer skilled in Java, Spring Boot, Spring Security, JWT, Spring Data JPA, Hibernate, MySQL, REST APIs and React.",
       },
       { name: "author", content: "Mohammad Aamir" },
       { name: "theme-color", content: "#0C0C0C" },
       { property: "og:site_name", content: "Mohammad Aamir" },
+      { property: "og:type", content: "website" },
       {
         property: "og:url",
         content: "https://mohammad-aamir-khan.netlify.app/",
@@ -93,8 +94,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Mohammad Aamir — Full Stack Java Developer" },
       { name: "twitter:title", content: "Mohammad Aamir — Full Stack Java Developer" },
-      { property: "og:description", content: "Portfolio of Mohammad Aamir, a Full Stack Java Developer skilled in Java, Spring Boot, Hibernate, MySQL, React, REST APIs and Spring AI." },
-      { name: "twitter:description", content: "Portfolio of Mohammad Aamir, a Full Stack Java Developer skilled in Java, Spring Boot, Hibernate, MySQL, React, REST APIs and Spring AI." },
+      {
+        property: "og:description",
+        content:
+          "Portfolio of Mohammad Aamir, a Mumbai-based Full Stack Java Developer skilled in Java, Spring Boot, Spring Security, JWT, Spring Data JPA, Hibernate, MySQL, REST APIs and React.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Portfolio of Mohammad Aamir, a Mumbai-based Full Stack Java Developer skilled in Java, Spring Boot, Spring Security, JWT, Spring Data JPA, Hibernate, MySQL, REST APIs and React.",
+      },
       {
         property: "og:image",
         content: "https://mohammad-aamir-khan.netlify.app/og-image.png",
@@ -164,6 +173,9 @@ function RootShell({ children }: { children: ReactNode }) {
         "Java",
         "Spring Boot",
         "Spring Framework",
+        "Spring Security",
+        "Spring Data JPA",
+        "JWT",
         "Hibernate",
         "JPA",
         "REST APIs",
