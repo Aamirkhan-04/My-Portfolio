@@ -1,3 +1,4 @@
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -17,7 +18,9 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">
+          Page not found
+        </h2>
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
         </p>
@@ -34,11 +37,20 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({
+  error,
+  reset,
+}: {
+  error: Error;
+  reset: () => void;
+}) {
   console.error(error);
   const router = useRouter();
+
   useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
+    reportLovableError(error, {
+      boundary: "tanstack_root_error_component",
+    });
   }, [error]);
 
   return (
@@ -72,7 +84,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient;
+}>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -92,8 +106,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "https://mohammad-aamir-khan.netlify.app/",
       },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Mohammad Aamir — Full Stack Java Developer" },
-      { name: "twitter:title", content: "Mohammad Aamir — Full Stack Java Developer" },
+      {
+        property: "og:title",
+        content: "Mohammad Aamir — Full Stack Java Developer",
+      },
+      {
+        name: "twitter:title",
+        content: "Mohammad Aamir — Full Stack Java Developer",
+      },
       {
         property: "og:description",
         content:
@@ -115,15 +135,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-
       { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "shortcut icon", href: "/favicon.png", type: "image/png" },
-
       {
         rel: "canonical",
         href: "https://mohammad-aamir-khan.netlify.app/",
       },
-
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
         rel: "preconnect",
@@ -157,7 +174,7 @@ function RootShell({ children }: { children: ReactNode }) {
       "@type": "Person",
       name: "Mohammad Aamir",
       url: "https://mohammad-aamir-khan.netlify.app/",
-      image: "https://mohammad-aamir-khan.netlify.app/favicon.png",
+      image: "https://mohammad-aamir-khan.netlify.app/images/profile.png",
       jobTitle: "Full Stack Java Developer",
       address: {
         "@type": "PostalAddress",
@@ -185,6 +202,18 @@ function RootShell({ children }: { children: ReactNode }) {
         "TypeScript",
         "Spring AI",
       ],
+    },
+
+    // WebPage structured data
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "Mohammad Aamir — Full Stack Java Developer",
+      url: "https://mohammad-aamir-khan.netlify.app/",
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: "https://mohammad-aamir-khan.netlify.app/images/profile.png",
+      },
     },
   ];
 
@@ -219,3 +248,5 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
+
+export default Route;
