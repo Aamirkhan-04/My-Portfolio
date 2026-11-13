@@ -166,7 +166,7 @@ function RootShell({ children }: { children: ReactNode }) {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Mohammad Aamir",
-      alternateName: "Mohammad Aamir Portfolio",
+      alternateName: ["Aamir"],
       url: "https://mohammad-aamir-khan.netlify.app/",
     },
     {
