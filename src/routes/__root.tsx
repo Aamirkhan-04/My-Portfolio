@@ -99,7 +99,7 @@ export const Route = createRootRouteWithContext<{
       },
       { name: "author", content: "Mohammad Aamir" },
       { name: "theme-color", content: "#0C0C0C" },
-      { property: "og:site_name", content: "Mohammad Aamir" },
+      { property: "og:site_name", content: "Mohammad Aamir Java Developer" },
       { property: "og:type", content: "website" },
       {
         property: "og:url",
@@ -165,8 +165,12 @@ function RootShell({ children }: { children: ReactNode }) {
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      name: "Mohammad Aamir",
-      alternateName: ["Aamir"],
+      name: "Mohammad Aamir Java Developer",
+      alternateName: [
+        "Mohammad Aamir",
+        "Aamir",
+        "mohammad-aamir-khan.netlify.app"
+      ],
       url: "https://mohammad-aamir-khan.netlify.app/",
     },
     {
